@@ -7,18 +7,22 @@
   </url>
 
   <url>
-    <loc>https://your-domain.com/#about</loc>
+    <loc>https://your-domain.com/about</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://your-domain.com/#services</loc>
+    <loc>https://your-domain.com/services</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://your-domain.com/#contact</loc>
+    <loc>https://your-domain.com/contact</loc>
     <priority>0.8</priority>
   </url>
 
 </urlset>
+
+  <url>
+    <loc>https://your-real-domain.com/services</loc>
+  </url>
