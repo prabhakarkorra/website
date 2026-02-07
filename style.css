@@ -40,7 +40,7 @@ h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
 }
 
 .brand-icon {
-    width: 35px;
+    width: 125px;
     height: auto;
     object-fit: contain;
 }
@@ -330,3 +330,4 @@ nav {
         text-decoration: none;
     }
 }
+
