@@ -1,14 +1,14 @@
 /* style.css */
 
 :root {
-    --primary: #0f172a;       /* Dark Slate */
-    --primary-light: #1e293b; /* Lighter Slate */
-    --accent: #3b82f6;        /* Medical Blue */
+    --primary: #0f172a;       
+    --primary-light: #1e293b; 
+    --accent: #3b82f6;        
     --accent-dark: #2563eb;
-    --success: #10b981;       /* Green for Status/WhatsApp */
+    --success: #10b981;       
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --gradient-overlay: linear-gradient(180deg, rgba(15,23,42,0) 0%, #0f172a 100%);
+    --nav-bg: rgba(15, 23, 42, 0.95);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,21 +25,22 @@ body {
 h1, h2, h3, h4 { line-height: 1.2; letter-spacing: -0.02em; }
 .text-accent { color: var(--accent); }
 .text-center { text-align: center; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
 /* --- Custom Logo Styling --- */
 .brand-logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: white;
     text-decoration: none;
+    z-index: 1001;
 }
 
 .brand-icon {
-    width: 130px;
+    width: 35px;
     height: auto;
     object-fit: contain;
 }
@@ -49,9 +50,9 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(15, 23, 42, 0.9);
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
-    padding: 1.2rem 0;
+    padding: 1rem 0;
     z-index: 1000;
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
@@ -60,6 +61,8 @@ nav {
     justify-content: space-between;
     align-items: center;
 }
+
+/* Desktop Nav */
 .nav-links { display: flex; gap: 2rem; }
 .nav-links a {
     color: var(--text-muted);
@@ -69,6 +72,7 @@ nav {
     transition: 0.3s;
 }
 .nav-links a:hover { color: var(--accent); }
+
 .nav-btn {
     padding: 0.6rem 1.5rem;
     background: var(--accent);
@@ -77,8 +81,18 @@ nav {
     text-decoration: none;
     font-weight: 600;
     transition: 0.3s;
+    white-space: nowrap;
 }
 .nav-btn:hover { background: var(--accent-dark); }
+
+/* Hamburger Menu (Hidden on Desktop) */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
 
 /* --- Hero Section --- */
 .hero {
@@ -89,7 +103,6 @@ nav {
     padding-top: 80px;
 }
 
-/* Background Image with Dark Overlay */
 .hero-bg {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -107,7 +120,7 @@ nav {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive Font Size */
     margin-bottom: 1.5rem;
     background: linear-gradient(to right, #ffffff, #cbd5e1);
     -webkit-background-clip: text;
@@ -115,13 +128,13 @@ nav {
 }
 
 .hero p {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: var(--text-muted);
     margin-bottom: 2.5rem;
     max-width: 600px;
 }
 
-.cta-group { display: flex; gap: 1rem; }
+.cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn-outline {
     padding: 1rem 2.5rem;
     border: 1px solid rgba(255,255,255,0.2);
@@ -133,20 +146,21 @@ nav {
 }
 .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.05); }
 
-/* --- Features/Process --- */
-.section { padding: 6rem 0; }
+/* --- Common Sections --- */
+.section { padding: 5rem 0; }
 .bg-light { background: var(--primary-light); }
 
 .section-header {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     max-width: 600px;
 }
-.section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+.section-header h2 { font-size: 2.2rem; margin-bottom: 1rem; }
 .section-header p { color: var(--text-muted); }
 
+/* --- Process Grid --- */
 .process-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Optimized for mobile */
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -159,7 +173,7 @@ nav {
 .step-number {
     font-size: 3rem;
     font-weight: 700;
-    color: rgba(59, 130, 246, 0.2); /* Faded accent */
+    color: rgba(59, 130, 246, 0.2); 
     position: absolute;
     top: 0;
     left: 1.5rem;
@@ -168,10 +182,10 @@ nav {
 .process-step h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; position: relative; }
 .process-step p { color: var(--text-muted); font-size: 0.95rem; position: relative; }
 
-/* --- Services --- */
+/* --- Services Grid --- */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -204,12 +218,12 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem;
     flex-wrap: wrap;
     margin-top: 3rem;
-    opacity: 0.7;
+    opacity: 0.8;
 }
-.compliance-item { font-size: 1.5rem; font-weight: 700; color: var(--text-muted); }
+.compliance-item { font-size: 1.2rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center;}
 .compliance-item i { margin-right: 10px; }
 
 /* --- Contact --- */
@@ -238,42 +252,81 @@ nav {
 /* --- WhatsApp Float --- */
 .whatsapp-float {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     background-color: var(--success);
     color: white;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 28px;
     box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
     transition: 0.3s;
     z-index: 2000;
     text-decoration: none;
 }
 .whatsapp-float:hover { transform: scale(1.1); }
-.whatsapp-tooltip {
-    position: absolute;
-    right: 70px;
-    background: white;
-    color: var(--primary);
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    white-space: nowrap;
-    opacity: 0;
-    transition: 0.3s;
-    pointer-events: none;
-}
-.whatsapp-float:hover .whatsapp-tooltip { opacity: 1; right: 80px; }
 
-/* Mobile */
+/* --- MOBILE & TABLET OPTIMIZATION --- */
+@media (max-width: 900px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+    
+    .about-wrapper {
+        display: flex;
+        flex-direction: column-reverse; /* Text on top on mobile */
+    }
+}
+
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .nav-links { display: none; }
-    .contact-wrapper { grid-template-columns: 1fr; }
+    /* Show Hamburger */
+    .menu-toggle { display: block; }
+
+    /* Hide Desktop Nav Links initially */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 75%;
+        background-color: var(--primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s ease;
+        border-left: 1px solid rgba(255,255,255,0.1);
+        padding-top: 60px; /* Space for close button if needed */
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    /* Show Menu when active */
+    .nav-links.active { right: 0; }
+
+    .nav-links a { font-size: 1.5rem; }
+    
+    /* Adjust Hero */
+    .hero { text-align: left; padding-top: 100px; min-height: 80vh; }
+    .hero h1 { line-height: 1.1; }
+    
+    /* Adjust Section Spacing */
+    .section { padding: 3.5rem 0; }
+    
+    /* Hide Nav Button in Menu, show as link */
+    .nav-btn { display: none; } 
+    
+    /* Add a partner link inside the menu for mobile */
+    .mobile-only-btn {
+        display: block;
+        padding: 1rem 2rem;
+        background: var(--accent);
+        border-radius: 50px;
+        margin-top: 1rem;
+        color: white;
+        text-decoration: none;
+    }
 }
